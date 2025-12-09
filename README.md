@@ -1,33 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FamHub - Gerenciador Familiar
 
-## Getting Started
+Um aplicativo web para gerenciamento de rotinas e responsabilidades familiares, desenvolvido como protótipo para a disciplina de Projeto de Interfaces de Usuário (PIU) da UFRN.
 
-First, run the development server:
+## 📱 Sobre o Projeto
 
+O FamHub é um gerenciador geral de núcleo familiar que organiza responsabilidades e rotinas dentro de um grupo familiar, incluindo:
+
+- 🏠 **Dashboard familiar** com visão geral das atividades
+- 📅 **Agenda compartilhada** para compromissos médicos, escolares e pessoais
+- 💊 **Controle de medicamentos** com lembretes de horários
+- ✅ **Lista de tarefas** distribuídas entre os membros
+- 🛒 **Lista de compras colaborativa** com comentários
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+- Node.js (versão 18 ou superior)
+- npm (vem com o Node.js)
+
+### Instalação
+
+1. Clone ou baixe o projeto para seu computador
+
+2. No terminal, navegue até a pasta do projeto:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd famhub
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Instale as dependências:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+4. Execute o projeto em modo de desenvolvimento:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Abra o navegador e acesse:
+```
+http://localhost:3000/famhub
+```
 
-## Learn More
+## 🛠️ Tecnologias Utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 15** - Framework React para desenvolvimento web
+- **React 19** - Biblioteca para interfaces de usuário
+- **Material-UI (MUI)** - Sistema de design e componentes
+- **JavaScript/ES6+** - Linguagem de programação
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👥 Personas de Teste
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+O protótipo foi desenvolvido baseado em 3 personas principais:
+- **Fabrício Neves** (42 anos) - Pai de família que precisa organizar rotinas
+- **Nicole Carvalho** (31 anos) - Gestante que gerencia cuidados da mãe idosa
+- **Lucas Vieira** (26 anos) - Filho que ajuda a organizar a família
+
+## 📂 Estrutura do Projeto
+
+```
+famhub/
+├── src/app/famhub/
+│   ├── components/          # Componentes das telas
+│   │   ├── HomeScreen.js    # Tela inicial
+│   │   ├── CalendarScreen.js # Agenda
+│   │   ├── MedicationsScreen.js # Medicamentos
+│   │   ├── TasksScreen.js   # Tarefas
+│   │   └── ShoppingScreen.js # Lista de compras
+│   ├── data/
+│   │   └── mockData.js      # Dados de exemplo
+│   ├── page.js              # Componente principal
+│   └── layout.js            # Layout da aplicação
+```
+
+## 🎯 Funcionalidades Implementadas
+
+- ✅ Interface mobile-first responsiva
+- ✅ Navegação entre 5 telas principais
+- ✅ Dados mockados para demonstração
+- ✅ Componentes interativos (checkboxes, botões)
+- ✅ Sistema visual de status e progresso
+- ✅ Design baseado em Material Design
+
+## 💡 Como Testar
+
+1. Acesse a aplicação em `http://localhost:3000/famhub`
+2. Navegue pelas abas no menu inferior
+3. Teste as funcionalidades interativas:
+   - Marque/desmarque tarefas
+   - Marque itens da lista de compras
+   - Confirme administração de medicamentos
+   - Explore os detalhes dos compromissos
+
+## 📧 Contato
+
+Projeto desenvolvido para PIU - UFRN
+Dezembro de 2025
 
 ## Deploy on Vercel
 
