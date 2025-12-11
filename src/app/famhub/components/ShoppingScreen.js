@@ -25,10 +25,12 @@ import PersonIcon from "@mui/icons-material/Person";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState } from "react";
 import { mockShoppingLists } from "../data/mockData";
+import AddShoppingListForm from "./AddShoppingListForm";
 
 export default function ShoppingScreen() {
   const [lists, setLists] = useState(mockShoppingLists);
   const [comment, setComment] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const handleItemToggle = (listId, itemId) => {
     setLists((prev) =>
@@ -74,6 +76,10 @@ export default function ShoppingScreen() {
   const getListProgress = (list) => {
     const completed = list.items.filter((item) => item.completed).length;
     return Math.round((completed / list.items.length) * 100);
+  };
+
+  const handleAddShoppingList = (newList) => {
+    setLists((prev) => [...prev, newList]);
   };
 
   return (
@@ -269,6 +275,7 @@ export default function ShoppingScreen() {
       {/* Botão para criar nova lista */}
       <Fab
         color="primary"
+        onClick={() => setShowAddForm(true)}
         sx={{
           position: "fixed",
           bottom: 80,
@@ -278,6 +285,13 @@ export default function ShoppingScreen() {
       >
         <AddIcon />
       </Fab>
+
+      {/* Formulário para adicionar lista de compras */}
+      <AddShoppingListForm
+        open={showAddForm}
+        onClose={() => setShowAddForm(false)}
+        onAdd={handleAddShoppingList}
+      />
     </Box>
   );
 }

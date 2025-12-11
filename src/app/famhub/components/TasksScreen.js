@@ -24,9 +24,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import { useState } from "react";
 import { mockTasks } from "../data/mockData";
+import AddTaskForm from "./AddTaskForm";
 
 export default function TasksScreen() {
   const [tasks, setTasks] = useState(mockTasks);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const handleTaskComplete = (taskId) => {
     setTasks((prev) =>
@@ -72,6 +74,10 @@ export default function TasksScreen() {
 
   const pendingTasks = tasks.filter((task) => task.status === "pendente");
   const completedTasks = tasks.filter((task) => task.status === "concluido");
+
+  const handleAddTask = (newTask) => {
+    setTasks((prev) => [...prev, newTask]);
+  };
 
   return (
     <Box sx={{ p: 2, pb: 10 }}>
@@ -266,6 +272,7 @@ export default function TasksScreen() {
       {/* Botão para adicionar tarefa */}
       <Fab
         color="primary"
+        onClick={() => setShowAddForm(true)}
         sx={{
           position: "fixed",
           bottom: 80,
@@ -275,6 +282,13 @@ export default function TasksScreen() {
       >
         <AddIcon />
       </Fab>
+
+      {/* Formulário para adicionar tarefa */}
+      <AddTaskForm
+        open={showAddForm}
+        onClose={() => setShowAddForm(false)}
+        onAdd={handleAddTask}
+      />
     </Box>
   );
 }

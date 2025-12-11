@@ -19,9 +19,11 @@ import MedicationIcon from "@mui/icons-material/Medication";
 import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 import { useState } from "react";
 import { mockMedications } from "../data/mockData";
+import AddMedicationForm from "./AddMedicationForm";
 
 export default function MedicationsScreen() {
   const [medications, setMedications] = useState(mockMedications);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const handleTakeMedication = (medId) => {
     // Simular tomar medicamento
@@ -55,6 +57,10 @@ export default function MedicationsScreen() {
   };
 
   const activeMedications = medications.filter((med) => med.status === "ativo");
+
+  const handleAddMedication = (newMedication) => {
+    setMedications((prev) => [...prev, newMedication]);
+  };
 
   return (
     <Box sx={{ p: 2, pb: 10 }}>
@@ -213,6 +219,7 @@ export default function MedicationsScreen() {
       {/* Botão para adicionar medicamento */}
       <Fab
         color="primary"
+        onClick={() => setShowAddForm(true)}
         sx={{
           position: "fixed",
           bottom: 80,
@@ -222,6 +229,13 @@ export default function MedicationsScreen() {
       >
         <AddIcon />
       </Fab>
+
+      {/* Formulário para adicionar medicamento */}
+      <AddMedicationForm
+        open={showAddForm}
+        onClose={() => setShowAddForm(false)}
+        onAdd={handleAddMedication}
+      />
 
       <style jsx>{`
         @keyframes pulse {

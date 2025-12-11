@@ -25,12 +25,14 @@ import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import { useState } from "react";
 import { mockAppointments } from "../data/mockData";
+import AddAppointmentForm from "./AddAppointmentForm";
 
 export default function CalendarScreen() {
-  const [appointments] = useState(mockAppointments);
+  const [appointments, setAppointments] = useState(mockAppointments);
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const getTypeIcon = (type) => {
     const iconMap = {
@@ -92,6 +94,10 @@ export default function CalendarScreen() {
   const selectedAppointments = appointments.filter(
     (apt) => apt.date === selectedDate
   );
+
+  const handleAddAppointment = (newAppointment) => {
+    setAppointments(prev => [...prev, newAppointment]);
+  };
 
   return (
     <Box sx={{ p: 2, pb: 10 }}>
@@ -310,6 +316,7 @@ export default function CalendarScreen() {
       {/* Botão para adicionar compromisso */}
       <Fab
         color="primary"
+        onClick={() => setShowAddForm(true)}
         sx={{
           position: "fixed",
           bottom: 80,
@@ -319,6 +326,13 @@ export default function CalendarScreen() {
       >
         <AddIcon />
       </Fab>
+
+      {/* Formulário para adicionar compromisso */}
+      <AddAppointmentForm
+        open={showAddForm}
+        onClose={() => setShowAddForm(false)}
+        onAdd={handleAddAppointment}
+      />
     </Box>
   );
 }
